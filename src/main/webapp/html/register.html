@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/register.css" />
+  </head>
+  <body>
+    <h1>BOOK MANAGEMENT SYSTEM</h1>
+    <form id="register-form" method="post" name="registerForm">
+      <table>
+        <tr>
+          <td>Username:</td>
+          <td>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Type in your Username"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email address"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input
+              type="password"
+              name="password"
+              class="password"
+              placeholder="Enter your password"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Re-type password:</td>
+          <td>
+            <input
+              type="password"
+              name="password"
+              class="password"
+              placeholder="Re-type password"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Choose your role:</td>
+          <td>
+            <select name="role" id="role">
+              <option value="Customer">Customer</option>
+              <option value="Administrator">Administrator</option>
+              <option value="Librarian">Librarian</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" name="register" value="Register" />
+    </form>
+  </body>
+</html>

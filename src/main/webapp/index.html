@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
   <body>
-    <form action="login" method="post">
-      <label for="email">Email: </label><br />
-      <input type="text" id="email" name="email" /><br />
-      <label for="password">Password: </label><br />
-      <input type="password" id="password" name="password" /><br />
-      <label for="userNamwe">Set your username: </label><br />
-      <input type="text" id="user-name" name="userName" /><br />
-      <input type="submit" />
+    <h1>BOOK MANAGEMENT SYSTEM</h1>
+    <form id="login-form" method="post" name="loginForm">
+      <table>
+        <tr>
+          <td>Email: </td>
+          <td>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email address"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Password: </td>
+          <td>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+          </td>
+          <tr>
+            <td>
+              <input type="submit" name="submit" value="Login">
+            </td>
+            <td><a href="html/register.html">Register</a></td>
+          </tr>
+        </tr>
+      </table>
     </form>
   </body>
 </html>
