@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>
-    <form id="login-form" method="post" name="loginForm">
+    <form id="login-form" method="post" name="login">
       <table>
         <tr>
           <td>Email: </td>
@@ -15,6 +15,7 @@
               name="email"
               id="email"
               placeholder="Enter your email address"
+              required
             />
           </td>
         </tr>
@@ -26,13 +27,14 @@
               name="password"
               id="password"
               placeholder="Enter your password"
+              required
             />
           </td>
           <tr>
             <td>
               <input type="submit" name="submit" value="Login">
             </td>
-            <td><a href="html/register.html">Register</a></td>
+            <td><a href="jsp/register.jsp">Register</a></td>
           </tr>
         </tr>
       </table>

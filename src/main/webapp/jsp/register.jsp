@@ -5,16 +5,17 @@
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>
-    <form id="register-form" method="post" name="registerForm">
+    <form id="register-form" method="post" name="register" action="register">
       <table>
         <tr>
           <td>Username:</td>
           <td>
             <input
               type="text"
-              name="username"
+              name="user_name"
               id="username"
               placeholder="Type in your Username"
+              required
             />
           </td>
         </tr>
@@ -26,6 +27,7 @@
               name="email"
               id="email"
               placeholder="Enter your email address"
+              required
             />
           </td>
         </tr>
@@ -37,6 +39,7 @@
               name="password"
               class="password"
               placeholder="Enter your password"
+              required
             />
           </td>
         </tr>
@@ -48,6 +51,7 @@
               name="password"
               class="password"
               placeholder="Re-type password"
+              required
             />
           </td>
         </tr>
@@ -55,7 +59,7 @@
           <td>Choose your role:</td>
           <td>
             <select name="role" id="role">
-              <option value="Customer">Customer</option>
+              <option value="Reader">Reader</option>
               <option value="Administrator">Administrator</option>
               <option value="Librarian">Librarian</option>
             </select>
