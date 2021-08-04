@@ -1,6 +1,7 @@
 package com.learn;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +19,10 @@ public class BookServlet extends HttpServlet {
         int book_id = Integer.parseInt(request.getParameter("book_id"));
         BookDao dao = new BookDao();
         Book book = dao.getBook(book_id);
+        List<Book> books = dao.getBooks();
 
         request.setAttribute("book", book);
+        request.setAttribute("books", books);
 
         String url = "/jsp/book.jsp";
 

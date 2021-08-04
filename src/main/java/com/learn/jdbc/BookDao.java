@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.learn.entity.Book;
 
@@ -33,5 +35,24 @@ public class BookDao {
         }
 
         return book;
+    }
+
+    public List<Book> getBooks() {
+        List<Book> books = new ArrayList<Book>();
+
+        try {
+            Class.forName(driver);
+            Connection connection = DriverManager.getConnection(url, name, password);
+            Statement stm = connection.createStatement();
+            ResultSet result = stm.executeQuery("SELECT * FROM book");
+            while (result.next()) {
+                books.add(new Book(result.getInt("book_id"), result.getString("title"), result.getString("author"),
+                        result.getInt("category_id"), result.getInt("published_year")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return books;
     }
 }

@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <!-- <h1>BOOK MANAGEMENT SYSTEM</h1>
+    <h1>BOOK MANAGEMENT SYSTEM</h1>
     <form id="login-form" method="post" name="login">
       <table>
         <tr>
@@ -38,7 +38,7 @@
           </tr>
         </tr>
       </table>
-    </form> -->
+    </form>
     <form action="getBook" method="get">
       <input type="text" name="book_id" />
       <input type="submit" />
