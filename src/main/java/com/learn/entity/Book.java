@@ -7,6 +7,9 @@ public class Book {
     private int category_id;
     private int published_year;
 
+    public Book() {
+    }
+
     public Book(int book_id, String title, String author, int category_id, int published_year) {
         this.book_id = book_id;
         this.title = title;
@@ -53,5 +56,11 @@ public class Book {
 
     public void setPublished_year(int published_year) {
         this.published_year = published_year;
+    }
+
+    @Override
+    public String toString() {
+        return book_id + ". " + title + ", author=" + author + ", category_id=" + category_id + ", published_year="
+                + published_year;
     }
 }
