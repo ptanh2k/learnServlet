@@ -7,9 +7,8 @@
     <title>BOOK</title>
   </head>
   <body>
-    <c:forEach begin="0" end="${fn:length(books) - 1}" var="index" />
-      <tr>
-        <td><c:out value="${books[index]}" /></td>
-      </tr>
+    <c:forEach items="${books}" var="book">
+      <p>${book}</p><br>
+    </c:forEach>
   </body>
 </html>
