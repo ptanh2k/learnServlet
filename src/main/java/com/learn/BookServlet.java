@@ -19,11 +19,11 @@ public class BookServlet extends HttpServlet {
         BookDao dao = new BookDao();
         Book book = dao.getBook(book_id);
 
-        request.setAttribute("Book", book);
+        request.setAttribute("book", book);
 
         String url = "/jsp/book.jsp";
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+        RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }
 }

@@ -5,6 +5,6 @@
     <title>BOOK</title>
   </head>
   <body>
-    <% Book book = (Book) request.getAttribute("book"); out.println(book); %>
+    <% Book book = (Book) request.getAttribute("book"); out.print(book); %>
   </body>
 </html>

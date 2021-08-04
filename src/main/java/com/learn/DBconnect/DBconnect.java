@@ -9,7 +9,7 @@ public class DBconnect {
     private static final String name = "root";
     private static final String password = "Anh988119@@@";
 
-    private static final String driver = "com.mysql.jdbc.Driver";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
     private Connection connection;
 
     public DBconnect() {
