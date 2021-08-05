@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.learn.entity.Book;
+import com.learn.entity.Category;
 import com.learn.entity.User;
 
 public class Dao {
@@ -58,6 +59,46 @@ public class Dao {
         return books;
     }
 
+    public List<Category> getCategories() {
+        List<Category> categories = new ArrayList<Category>();
+
+        try {
+            Class.forName(driver);
+            Connection connection = DriverManager.getConnection(url, name, password);
+            Statement stm = connection.createStatement();
+            ResultSet result = stm.executeQuery("SELECT * FROM category");
+            while (result.next()) {
+                categories.add(new Category(result.getInt("category_id"), result.getString("category_name")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return categories;
+    }
+
+    public List<Book> getBookByCategory(String category_name) {
+        List<Book> books = new ArrayList<Book>();
+
+        String sql = "SELECT b.*, c.category_name FROM book b JOIN category c ON b.category_id = c.category_id AND c.category_name = "
+                + "'" + category_name + "'";
+
+        try {
+            Class.forName(driver);
+            Connection connection = DriverManager.getConnection(url, name, password);
+            Statement stm = connection.createStatement();
+            ResultSet result = stm.executeQuery(sql);
+            while (result.next()) {
+                books.add(new Book(result.getInt("book_id"), result.getString("title"), result.getString("author"),
+                        result.getInt("category_id"), result.getInt("published_year")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return books;
+    }
+
     public void registerUser(User user) {
         String query = "INSERT INTO user " + "(user_name, email, password, role) VALUES " + "(?, ?, ?, ?)";
         int count = 0;
@@ -71,24 +112,6 @@ public class Dao {
             stm.setString(5, user.getRole());
             count = stm.executeUpdate();
             System.out.println(count + " row(s) affected");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void getUser(String email) {
-        User user = new User();
-
-        try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, name, password);
-            String query = "SELECT * FROM user WHERE user_email = " + email;
-            PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1, email);
-            ResultSet result = stm.executeQuery();
-            while (result.next()) {
-                user.setEmail(result.getString(1));
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,8 @@
+#category {
+  border: none;
+  background-color: white;
+}
+
+#category:hover {
+  cursor: pointer;
+}

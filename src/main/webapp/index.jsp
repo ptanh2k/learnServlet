@@ -46,7 +46,7 @@
     </form>
     <form action="getCategory" method="get">
       Get category <br>
-      <input type="submit" value="Category" />
+      <input type="submit" name="category"/>
     </form>
   </body>
 </html>

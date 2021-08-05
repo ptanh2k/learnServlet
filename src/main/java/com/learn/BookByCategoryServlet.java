@@ -1,6 +1,7 @@
 package com.learn;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,24 +11,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.learn.entity.Category;
+import com.learn.entity.Book;
 import com.learn.jdbc.Dao;
 
-@WebServlet("/getCategory")
-public class CategoryServlet extends HttpServlet {
+@WebServlet("/getBookByCategory")
+public class BookByCategoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String category = request.getParameter("category");
         Dao dao = new Dao();
-        List<Category> categories = dao.getCategories();
+        List<Book> books = dao.getBookByCategory(category);
 
-        request.setAttribute("categories", categories);
+        request.setAttribute("list_book_by_category", books);
+        request.setAttribute("category", category);
 
-        String url = "/jsp/categories.jsp";
+        String url = "/jsp/book_category.jsp";
 
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-    }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        PrintWriter out = response.getWriter();
+        out.print(category);
     }
 }
