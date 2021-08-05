@@ -40,8 +40,13 @@
       </table>
     </form>
     <form action="getBook" method="get">
+      Get book <br>
       <input type="text" name="book_id" />
       <input type="submit" />
+    </form>
+    <form action="getCategory" method="get">
+      Get category <br>
+      <input type="submit" value="Category" />
     </form>
   </body>
 </html>

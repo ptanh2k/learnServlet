@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.User;
-import com.learn.jdbc.UserDao;
+import com.learn.jdbc.Dao;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private UserDao userDao = new UserDao();
+    private Dao userDao = new Dao();
 
     public RegisterServlet() {
         super();

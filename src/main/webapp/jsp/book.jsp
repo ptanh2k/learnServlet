@@ -7,8 +7,13 @@
     <title>BOOK</title>
   </head>
   <body>
-    <c:forEach items="${books}" var="book">
-      <p>${book}</p><br>
-    </c:forEach>
-  </body>
+    <table>
+      <c:forEach items="${books}" var="book">
+        <tr>
+          <td>${book.getBook_id()}</td>
+          <td>${book.getTitle()}</td>
+        </tr>
+      </c:forEach>
+    </table>
+</body>
 </html>
