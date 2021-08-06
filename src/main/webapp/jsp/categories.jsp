@@ -5,7 +5,7 @@
 <html>
   <head>
     <title>CATEGORIES</title>
-    <link rel="stylesheet" href="../css/category.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/category.css" />
   </head>
   <body>
     <form method="get" action="getBookByCategory">

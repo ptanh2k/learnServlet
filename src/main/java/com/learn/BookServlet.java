@@ -13,16 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.learn.entity.Book;
 import com.learn.jdbc.Dao;
 
-@WebServlet("/getBook")
+@WebServlet("/searchBook")
 public class BookServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int book_id = Integer.parseInt(request.getParameter("book_id"));
+        String input_title = request.getParameter("title");
+        String title = input_title.trim().replaceAll("\\s+", "").toLowerCase();
         Dao dao = new Dao();
-        Book book = dao.getBook(book_id);
-        List<Book> books = dao.getBooks();
+        Book book = dao.searchBook(title);
 
         request.setAttribute("book", book);
-        request.setAttribute("books", books);
 
         String url = "/jsp/book.jsp";
 

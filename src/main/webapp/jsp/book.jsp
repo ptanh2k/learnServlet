@@ -7,13 +7,26 @@
     <title>BOOK</title>
   </head>
   <body>
-    <table>
-      <c:forEach items="${books}" var="book">
-        <tr>
-          <td>${book.getBook_id()}</td>
-          <td>${book.getTitle()}</td>
-        </tr>
-      </c:forEach>
-    </table>
+    <c:choose>
+      <c:when test="${book == null}">
+        <p>Book not available</p> <br>
+      </c:when>
+      <c:otherwise>
+        <table>
+          <tr>
+            <td>Book ID</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Published year</td>
+          </tr>
+          <tr>
+            <td>${book.getBook_id()}</td>
+            <td>${book.getTitle()}</td>
+            <td>${book.getAuthor()}</td>
+            <td>${book.getPublished_year()}</td>
+          </tr>
+        </table> 
+      </c:otherwise>
+    </c:choose>
   </body>
 </html>

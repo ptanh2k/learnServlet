@@ -19,13 +19,14 @@ public class Dao {
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
 
-    public Book getBook(int id) {
+    public Book searchBook(String title) {
         Book book = new Book();
         try {
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, name, password);
             Statement stm = connection.createStatement();
-            ResultSet result = stm.executeQuery("SELECT * FROM book WHERE book_id = " + id);
+            ResultSet result = stm.executeQuery(
+                    "SELECT * FROM book WHERE LOWER(TRIM(REPLACE(title, ' ', ''))) = " + "'" + title + "'");
             if (result.next()) {
                 book.setBook_id(result.getInt("book_id"));
                 book.setTitle(result.getString("title"));

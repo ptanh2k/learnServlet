@@ -39,10 +39,10 @@
         </tr>
       </table>
     </form>
-    <form action="getBook" method="get">
-      Get book <br>
-      <input type="text" name="book_id" />
-      <input type="submit" />
+    <form action="searchBook" method="get">
+      Search book <br>
+      <input type="text" name="title" />
+      <input type="submit" value="Search" />
     </form>
     <form action="getCategory" method="get">
       Get category <br>
