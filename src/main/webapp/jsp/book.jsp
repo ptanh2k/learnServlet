@@ -8,7 +8,7 @@
   </head>
   <body>
     <c:choose>
-      <c:when test="${book == null}">
+      <c:when test="${empty book}">
         <p>Book not available</p> <br>
       </c:when>
       <c:otherwise>

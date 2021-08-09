@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>
-    <form id="login-form" method="post" name="login">
+    <form action="login" id="login" method="post" name="login">
       <table>
         <tr>
           <td>Email: </td>
@@ -38,15 +38,6 @@
           </tr>
         </tr>
       </table>
-    </form>
-    <form action="searchBook" method="get">
-      Search book <br>
-      <input type="text" name="title" />
-      <input type="submit" value="Search" />
-    </form>
-    <form action="getCategory" method="get">
-      Get category <br>
-      <input type="submit" name="category"/>
     </form>
   </body>
 </html>

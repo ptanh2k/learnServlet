@@ -1,7 +1,6 @@
 package com.learn;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,19 +16,17 @@ import com.learn.jdbc.Dao;
 @WebServlet("/getBookByCategory")
 public class BookByCategoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String category = request.getParameter("category");
         Dao dao = new Dao();
-        List<Book> books = dao.getBookByCategory(category);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<Book> books = dao.getBookByCategory(id);
 
         request.setAttribute("list_book_by_category", books);
-        request.setAttribute("category", category);
+        request.setAttribute("id", id);
 
         String url = "/jsp/book_category.jsp";
 
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-
-        PrintWriter out = response.getWriter();
-        out.print(category);
     }
 }
