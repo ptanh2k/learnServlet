@@ -25,8 +25,7 @@ public class Dao {
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, name, password);
             Statement stm = connection.createStatement();
-            ResultSet result = stm.executeQuery(
-                    "SELECT * FROM book WHERE LOWER(TRIM(REPLACE(title, ' ', ''))) = " + "'" + title + "'");
+            ResultSet result = stm.executeQuery("SELECT * FROM book WHERE title LIKE '" + title + "%'");
             if (result.next()) {
                 book.setBook_id(result.getInt("book_id"));
                 book.setTitle(result.getString("title"));

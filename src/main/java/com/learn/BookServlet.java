@@ -16,7 +16,7 @@ import com.learn.jdbc.Dao;
 public class BookServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String input_title = request.getParameter("title");
-        String title = input_title.trim().replaceAll("\\s+", "").toLowerCase();
+        String title = input_title.trim();
         Dao dao = new Dao();
         Book book = dao.searchBook(title);
 
