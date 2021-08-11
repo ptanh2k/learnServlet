@@ -18,11 +18,11 @@ public class BookByCategoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Dao dao = new Dao();
 
-        int id = Integer.parseInt(request.getParameter("id"));
-        List<Book> books = dao.getBookByCategory(id);
+        String category = request.getParameter("category");
+        List<Book> books = dao.getBookByCategory(category);
 
         request.setAttribute("list_book_by_category", books);
-        request.setAttribute("id", id);
+        request.setAttribute("category", category);
 
         String url = "/jsp/book_category.jsp";
 

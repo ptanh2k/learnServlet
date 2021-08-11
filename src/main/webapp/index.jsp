@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>

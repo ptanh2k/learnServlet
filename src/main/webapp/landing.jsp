@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="/css/landing.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/landing.css">
   </head>
   <body>
     <c:choose>
         <c:when test="${not empty email}">
             <h1>BOOK MANAGEMENT SYSTEM</h1>
             <h3>Hello ${email}</h3>
-            <h3>Hello ${user.getUser_name()}</h3>
+            <%-- <h3>Hello ${user.getUser_name()}</h3> --%>
             <form action="searchBook" method="get">
              Search book <br>
                 <input type="text" name="title" />

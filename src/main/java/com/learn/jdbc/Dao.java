@@ -77,11 +77,11 @@ public class Dao {
         return categories;
     }
 
-    public List<Book> getBookByCategory(int category_id) {
+    public List<Book> getBookByCategory(String category_name) {
         List<Book> books = new ArrayList<Book>();
 
-        String sql = "SELECT b.*, c.category_name FROM book b JOIN category c ON b.category_id = c.category_id AND c.category_id = "
-                + "'" + category_id + "'";
+        String sql = "SELECT b.*, c.category_name FROM book b JOIN category c ON b.category_id = c.category_id AND c.category_name = "
+                + "'" + category_name + "'";
 
         try {
             Class.forName(driver);

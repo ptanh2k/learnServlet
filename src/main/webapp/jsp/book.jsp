@@ -5,6 +5,7 @@
 <html>
   <head>
     <title>BOOK</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/book.css">
   </head>
   <body>
     <c:choose>
@@ -14,10 +15,10 @@
       <c:otherwise>
         <table>
           <tr>
-            <td>Book ID</td>
-            <td>Title</td>
-            <td>Author</td>
-            <td>Published year</td>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published year</th>
           </tr>
           <tr>
             <td>${book.getBook_id()}</td>

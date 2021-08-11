@@ -21,7 +21,7 @@ public class CategoryServlet extends HttpServlet {
 
         request.setAttribute("categories", categories);
 
-        String url = "/jsp/categories.jsp";
+        String url = "/jsp/category.jsp";
 
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);

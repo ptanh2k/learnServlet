@@ -18,6 +18,8 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        String ctx = request.getContextPath();
+
         Dao dao = new Dao();
 
         User user = dao.getUser(email, password);
@@ -26,9 +28,9 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
             session.setAttribute("user", user);
-            response.sendRedirect("landing.jsp");
+            response.sendRedirect(ctx + "/landing.jsp");
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect(ctx + "index.jsp");
         }
     }
 }

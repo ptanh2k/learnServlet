@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/register.css">
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>
