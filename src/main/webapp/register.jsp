@@ -5,15 +5,14 @@
   </head>
   <body>
     <h1>BOOK MANAGEMENT SYSTEM</h1>
-    <form id="register-form" method="post" name="register" action="register">
+    <form id="register-form" method="post" action="register">
       <table>
         <tr>
           <td>Username:</td>
           <td>
             <input
               type="text"
-              name="user_name"
-              id="username"
+              name="username"
               placeholder="Type in your Username"
               required
             />
@@ -25,7 +24,6 @@
             <input
               type="email"
               name="email"
-              id="email"
               placeholder="Enter your email address"
               required
             />
@@ -39,18 +37,6 @@
               name="password"
               class="password"
               placeholder="Enter your password"
-              required
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>Re-type password:</td>
-          <td>
-            <input
-              type="password"
-              name="password"
-              class="password"
-              placeholder="Re-type password"
               required
             />
           </td>

@@ -34,7 +34,7 @@
             <td>
               <input type="submit" name="submit" value="Login">
             </td>
-            <td><a href="jsp/register.jsp">Register</a></td>
+            <td><a href="register.jsp">Register</a></td>
           </tr>
         </tr>
       </table>

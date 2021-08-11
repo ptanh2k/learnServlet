@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
             session.setAttribute("user", user);
             response.sendRedirect(ctx + "/landing.jsp");
         } else {
-            response.sendRedirect(ctx + "index.jsp");
+            response.sendRedirect(ctx + "/index.jsp");
         }
     }
 }
