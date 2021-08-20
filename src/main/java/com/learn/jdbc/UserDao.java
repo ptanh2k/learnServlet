@@ -9,7 +9,7 @@ import java.sql.Statement;
 import com.learn.auth.HashedPass;
 import com.learn.entity.User;
 
-public class UserDao {
+public class UserDao implements UserDaoInterface {
     private static final String url = "jdbc:mysql://localhost:3306/book_sys";
     private static final String name = "root";
     private static final String password = "Anh988119@@@";
@@ -18,6 +18,7 @@ public class UserDao {
 
     HashedPass hashedPass = new HashedPass();
 
+    @Override
     public int registerUser(User user) {
         String query = "INSERT INTO user " + "(user_name, email, password, hashed_password, role) VALUES "
                 + " (?, ?, ?, ?, ?);";
@@ -39,6 +40,7 @@ public class UserDao {
         return count;
     }
 
+    @Override
     public User getUser(String email, String pwd) {
         User user = new User();
 
@@ -61,6 +63,7 @@ public class UserDao {
         return user;
     }
 
+    @Override
     public boolean checkLogin(String email, String pwd) {
         String query = "SELECT * FROM user WHERE email = ? AND password = ?";
 

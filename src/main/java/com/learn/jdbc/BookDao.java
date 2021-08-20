@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.learn.entity.Book;
-import com.learn.entity.Category;
 
-public class BookDao {
+public class BookDao implements BookDaoInterface {
     private static final String url = "jdbc:mysql://localhost:3306/book_sys";
     private static final String name = "root";
     private static final String password = "Anh988119@@@";
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
 
+    @Override
     public Book searchBook(String title) {
         Book book = new Book();
         try {
@@ -38,6 +38,7 @@ public class BookDao {
         return book;
     }
 
+    @Override
     public List<Book> getBooks() {
         List<Book> books = new ArrayList<Book>();
 
@@ -57,24 +58,7 @@ public class BookDao {
         return books;
     }
 
-    public List<Category> getCategories() {
-        List<Category> categories = new ArrayList<Category>();
-
-        try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, name, password);
-            Statement stm = connection.createStatement();
-            ResultSet result = stm.executeQuery("SELECT * FROM category");
-            while (result.next()) {
-                categories.add(new Category(result.getInt("category_id"), result.getString("category_name")));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return categories;
-    }
-
+    @Override
     public List<Book> getBookByCategory(String category_name) {
         List<Book> books = new ArrayList<Book>();
 
@@ -97,6 +81,7 @@ public class BookDao {
         return books;
     }
 
+    @Override
     public int addBookToList() {
         int count = 0;
 
