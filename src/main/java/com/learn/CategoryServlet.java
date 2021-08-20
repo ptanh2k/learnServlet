@@ -11,20 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.Category;
-import com.learn.jdbc.Dao;
+import com.learn.jdbc.BookDao;
 
 @WebServlet("/getCategory")
 public class CategoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Dao dao = new Dao();
+        BookDao dao = new BookDao();
         List<Category> categories = dao.getCategories();
 
-        request.setAttribute("categories", categories);
+        request.setAttribute("list_category", categories);
 
-        String url = "/jsp/category.jsp";
+        String ctx = request.getContextPath();
 
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+        String landing_url = "/landing.jsp";
+        String category_url = "/jsp/category.jsp";
+
+        // RequestDispatcher rd1 = request.getRequestDispatcher(ctx + landing_url);
+        RequestDispatcher rd2 = request.getRequestDispatcher(category_url);
+        // rd1.forward(request, response);
+        rd2.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.learn.entity.User;
-import com.learn.jdbc.Dao;
+import com.learn.jdbc.UserDao;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -20,7 +20,7 @@ public class Login extends HttpServlet {
 
         String ctx = request.getContextPath();
 
-        Dao dao = new Dao();
+        UserDao dao = new UserDao();
 
         User user = dao.getUser(email, password);
 

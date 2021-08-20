@@ -9,7 +9,7 @@
   </head>
   <body>
     <form method="get" action="getBookByCategory">
-       <c:forEach items="${categories}" var="category" >
+       <c:forEach items="${list_categories}" var="category" >
           <input type="submit" value="${category.getCategory_name()}" id="category" name="category" /> <br>
        </c:forEach>
     </form>

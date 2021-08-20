@@ -9,8 +9,7 @@
     <c:choose>
         <c:when test="${not empty email}">
             <h1>BOOK MANAGEMENT SYSTEM</h1>
-            <h3>Hello ${email}</h3>
-            <%-- <h3>Hello ${user.getUser_name()}</h3> --%>
+            <h3>Hello ${user.getUser_name()}</h3>
             <form action="searchBook" method="get">
              Search book <br>
                 <input type="text" name="title" />
@@ -19,6 +18,14 @@
             <form action="getCategory" method="get">
              Get category <br>
                  <input type="submit" name="category"/>
+            </form>
+            <form action="getBookByCategory" method="get">
+              <select name="category" id="category">
+                <c:forEach items="${list_category}" var="category">
+                  <option value="${category.getCategory_name()}">${category.getCategory_name()}</option>
+                </c:forEach>
+              </select>
+              <input type="submit" value="Search" />            
             </form>
             <form action="logout" method="post">
               <input type="submit" name="logout" value="Logout"/>

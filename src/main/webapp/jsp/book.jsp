@@ -13,6 +13,7 @@
         <p>Book not available</p> <br>
       </c:when>
       <c:otherwise>
+      <form action="addBookToList" method="post">
         <table>
           <tr>
             <th>Book ID</th>
@@ -25,8 +26,10 @@
             <td>${book.getTitle()}</td>
             <td>${book.getAuthor()}</td>
             <td>${book.getPublished_year()}</td>
+            <td><input type="submit" value="Add to list" /></td>
           </tr>
-        </table> 
+        </table>
+      </form>
       </c:otherwise>
     </c:choose>
   </body>

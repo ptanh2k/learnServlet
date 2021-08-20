@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.Book;
-import com.learn.jdbc.Dao;
+import com.learn.jdbc.BookDao;
 
 @WebServlet("/searchBook")
 public class BookServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String input_title = request.getParameter("title");
         String title = input_title.trim();
-        Dao dao = new Dao();
+        BookDao dao = new BookDao();
         Book book = dao.searchBook(title);
 
         request.setAttribute("book", book);

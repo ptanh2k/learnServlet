@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page import="com.learn.entity.Book"%>
 <%@page import="com.learn.entity.Category"%>
 <!DOCTYPE html>
@@ -9,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/book_category.css">
   </head>
   <body>
+  <form method="post" action="addBookToList">
     <table>
         <tr>
           <th>Book ID</th>
@@ -24,8 +24,10 @@
                 <td>${book.getAuthor()}</td>
                 <td>${book.getPublished_year()}</td>
                 <td>${category}</td>
+                <td><input type="submit" value="Add to list"/></td>
             </tr>
         </c:forEach>
-    </table>   
+    </table>
+  </form>
   </body>
 </html>

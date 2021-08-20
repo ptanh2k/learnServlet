@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.User;
-import com.learn.jdbc.Dao;
+import com.learn.jdbc.UserDao;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Dao dao = new Dao();
+        UserDao dao = new UserDao();
 
         String ctx = request.getContextPath();
 

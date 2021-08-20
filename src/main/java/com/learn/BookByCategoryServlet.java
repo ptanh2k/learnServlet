@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.Book;
-import com.learn.jdbc.Dao;
+import com.learn.jdbc.BookDao;
 
 @WebServlet("/getBookByCategory")
 public class BookByCategoryServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Dao dao = new Dao();
+        BookDao dao = new BookDao();
 
         String category = request.getParameter("category");
         List<Book> books = dao.getBookByCategory(category);
