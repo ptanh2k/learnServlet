@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.learn.entity.User"%>
+<%@page import="com.learn.entity.Category"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,23 +11,20 @@
         <c:when test="${not empty email}">
             <h1>BOOK MANAGEMENT SYSTEM</h1>
             <h3>Hello ${user.getUser_name()}</h3>
+            <h3>Hello ${list_category}</h3>
             <form action="searchBook" method="get">
              Search book <br>
                 <input type="text" name="title" />
                 <input type="submit" value="Search" />
             </form>
-            <form action="getCategory" method="get">
-             Get category <br>
-                 <input type="submit" name="category"/>
-            </form>
-            <form action="getBookByCategory" method="get">
+            <%-- <form action="getBookByCategory" method="get">
               <select name="category" id="category">
                 <c:forEach items="${list_category}" var="category">
                   <option value="${category.getCategory_name()}">${category.getCategory_name()}</option>
                 </c:forEach>
               </select>
               <input type="submit" value="Search" />            
-            </form>
+            </form> --%>
             <form action="logout" method="post">
               <input type="submit" name="logout" value="Logout"/>
             </form>

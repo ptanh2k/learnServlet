@@ -5,7 +5,7 @@
 <html>
   <head>
     <title>BOOK BY CATEGORY</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/book_category.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/book.css">
   </head>
   <body>
   <form method="post" action="addBookToList">

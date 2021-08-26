@@ -1,21 +1,15 @@
 package com.learn.jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.learn.DBconnect.DBconnect;
 import com.learn.auth.HashedPass;
 import com.learn.entity.User;
 
 public class UserDao implements UserDaoInterface {
-    private static final String url = "jdbc:mysql://localhost:3306/book_sys";
-    private static final String name = "root";
-    private static final String password = "Anh988119@@@";
-
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
-
     HashedPass hashedPass = new HashedPass();
 
     @Override
@@ -23,9 +17,9 @@ public class UserDao implements UserDaoInterface {
         String query = "INSERT INTO user " + "(user_name, email, password, hashed_password, role) VALUES "
                 + " (?, ?, ?, ?, ?);";
         int count = 0;
+        Connection connection = null;
         try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, name, password);
+            connection = DBconnect.openConnection();
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setString(1, user.getUser_name());
             stm.setString(2, user.getEmail());
@@ -34,6 +28,7 @@ public class UserDao implements UserDaoInterface {
             stm.setString(5, user.getRole());
             count = stm.executeUpdate();
             System.out.println(count + " row(s) affected");
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,10 +38,9 @@ public class UserDao implements UserDaoInterface {
     @Override
     public User getUser(String email, String pwd) {
         User user = new User();
-
+        Connection connection = null;
         try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, name, password);
+            connection = DBconnect.openConnection();
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(
                     "SELECT * FROM `user` WHERE email = '" + email + "'" + "AND password = '" + pwd + "'");
@@ -56,6 +50,7 @@ public class UserDao implements UserDaoInterface {
                 user.setEmail(result.getString("email"));
                 user.setRole(result.getString("role"));
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,10 +61,9 @@ public class UserDao implements UserDaoInterface {
     @Override
     public boolean checkLogin(String email, String pwd) {
         String query = "SELECT * FROM user WHERE email = ? AND password = ?";
-
+        Connection connection = null;
         try {
-            Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, name, password);
+            connection = DBconnect.openConnection();
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setString(1, email);
             stm.setString(2, pwd);
@@ -77,6 +71,7 @@ public class UserDao implements UserDaoInterface {
             if (result.next()) {
                 return true;
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

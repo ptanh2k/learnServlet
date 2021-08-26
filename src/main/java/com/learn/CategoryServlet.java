@@ -19,17 +19,14 @@ public class CategoryServlet extends HttpServlet {
         CategoryDao dao = new CategoryDao();
         List<Category> categories = dao.getCategories();
 
-        request.setAttribute("list_category", categories);
+        request.setAttribute("list_category", categories.get(1));
 
         String ctx = request.getContextPath();
 
-        String landing_url = "/landing.jsp";
-        String category_url = "/jsp/category.jsp";
+        String url = "/landing.jsp";
 
-        // RequestDispatcher rd1 = request.getRequestDispatcher(ctx + landing_url);
-        RequestDispatcher rd2 = request.getRequestDispatcher(category_url);
-        // rd1.forward(request, response);
-        rd2.forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher(ctx + url);
+        rd.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

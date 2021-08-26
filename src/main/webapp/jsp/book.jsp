@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page import="com.learn.entity.Book"%>
 <!DOCTYPE html>
 <html>
@@ -8,11 +7,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/book.css">
   </head>
   <body>
-    <c:choose>
-      <c:when test="${empty book}">
-        <p>Book not available</p> <br>
-      </c:when>
-      <c:otherwise>
       <form action="addBookToList" method="post">
         <table>
           <tr>
@@ -21,16 +15,16 @@
             <th>Author</th>
             <th>Published year</th>
           </tr>
-          <tr>
-            <td>${book.getBook_id()}</td>
-            <td>${book.getTitle()}</td>
-            <td>${book.getAuthor()}</td>
-            <td>${book.getPublished_year()}</td>
-            <td><input type="submit" value="Add to list" /></td>
-          </tr>
+          <c:forEach items="${books}" var="book">
+            <tr>
+              <td>${book.getBook_id()}<input type="hidden" name="book_id" value="${book.getBook_id()}"/></td>
+              <td>${book.getTitle()}<input type="hidden" name="title" value="${book.getTitle()}"/></td>
+              <td>${book.getAuthor()}<input type="hidden" name="author" value="${book.getAuthor()}"/></td>
+              <td>${book.getPublished_year()}<input type="hidden" name="published_year" value="${book.getPublished_year()}"/></td>
+              <td><input type="submit" value="Add to list" /></td>
+            </tr>
+          </c:forEach>
         </table>
       </form>
-      </c:otherwise>
-    </c:choose>
   </body>
 </html>
