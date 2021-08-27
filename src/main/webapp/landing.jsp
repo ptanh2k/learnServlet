@@ -25,6 +25,10 @@
               </select>
               <input type="submit" value="Search" />            
             </form> --%>
+            <form action="viewReadList" method="get">
+              View ${user.getUser_name()}'s read list
+              <input type="submit" value="View read list" />
+            </form> 
             <form action="logout" method="post">
               <input type="submit" name="logout" value="Logout"/>
             </form>
