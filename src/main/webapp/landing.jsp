@@ -11,20 +11,21 @@
         <c:when test="${not empty email}">
             <h1>BOOK MANAGEMENT SYSTEM</h1>
             <h3>Hello ${user.getUser_name()}</h3>
-            <h3>Hello ${list_category}</h3>
             <form action="searchBook" method="get">
              Search book <br>
                 <input type="text" name="title" />
                 <input type="submit" value="Search" />
             </form>
-            <%-- <form action="getBookByCategory" method="get">
+            <form action="getBookByCategory" method="get">
               <select name="category" id="category">
-                <c:forEach items="${list_category}" var="category">
-                  <option value="${category.getCategory_name()}">${category.getCategory_name()}</option>
+                <c:forEach items="${categoryList}" var="category">
+                  <option value="${category.getCategory_name()}">
+                    ${category.getCategory_name()}
+                  </option>
                 </c:forEach>
               </select>
               <input type="submit" value="Search" />            
-            </form> --%>
+            </form>
             <form action="viewReadList" method="get">
               View ${user.getUser_name()}'s read list
               <input type="submit" value="View read list" />

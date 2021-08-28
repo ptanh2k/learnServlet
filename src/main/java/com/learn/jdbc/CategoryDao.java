@@ -11,8 +11,8 @@ import com.learn.entity.Category;
 
 public class CategoryDao implements CategoryDaoInterface {
     @Override
-    public List<Category> getCategories() {
-        List<Category> categories = new ArrayList<Category>();
+    public List<Category> getCategoryList() {
+        List<Category> categoryList = new ArrayList<Category>();
         Connection connection = null;
 
         try {
@@ -20,14 +20,14 @@ public class CategoryDao implements CategoryDaoInterface {
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery("SELECT * FROM category");
             while (result.next()) {
-                categories.add(new Category(result.getInt("category_id"), result.getString("category_name")));
+                categoryList.add(new Category(result.getInt("category_id"), result.getString("category_name")));
             }
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return categories;
+        return categoryList;
     }
 
 }

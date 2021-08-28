@@ -17,4 +17,8 @@ public interface BookDaoInterface {
 
     public List<ReadList> viewListBookOfUser(User user);
 
+    public boolean checkBorrowStatus(int book_id);
+
+    public int returnBook(int book_id);
+
 }

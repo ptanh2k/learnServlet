@@ -143,4 +143,47 @@ public class BookDao implements BookDaoInterface {
 
         return books;
     }
+
+    @Override
+    public boolean checkBorrowStatus(int book_id) {
+        Connection connection = null;
+
+        String sql = "SELECT * FROM borrow_detail WHERE book_id = " + book_id;
+
+        try {
+            connection = DBconnect.openConnection();
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            if (rs.next()) {
+                return true;
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    public int returnBook(int book_id) {
+        Connection connection = null;
+
+        String sql = "DELETE FROM borrow_detail WHERE book_id = ?";
+
+        int count = 0;
+
+        try {
+            connection = DBconnect.openConnection();
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, book_id);
+            count = stm.executeUpdate();
+            System.out.println(count + " row(s) affected");
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
 }

@@ -32,11 +32,13 @@ public class AddBookServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
 
-        dao.addBookToList(user, book);
-
         String ctx = request.getContextPath();
 
-        response.sendRedirect(ctx + "/jsp/success.jsp");
-
+        if (dao.checkBorrowStatus(book_id)) {
+            response.sendRedirect(ctx + "/jsp/book_status.jsp");
+        } else {
+            dao.addBookToList(user, book);
+            response.sendRedirect(ctx + "/jsp/success.jsp");
+        }
     }
 }

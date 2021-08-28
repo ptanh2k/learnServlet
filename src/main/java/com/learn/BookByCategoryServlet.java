@@ -11,11 +11,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.learn.entity.Book;
+import com.learn.entity.Category;
 import com.learn.jdbc.BookDao;
+import com.learn.jdbc.CategoryDao;
 
 @WebServlet("/getBookByCategory")
 public class BookByCategoryServlet extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void getCategory(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        CategoryDao dao = new CategoryDao();
+        List<Category> categoryList = dao.getCategoryList();
+
+        request.setAttribute("categoryList", categoryList);
+
+        String url = "landing.jsp";
+
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookDao dao = new BookDao();
 
         String category = request.getParameter("category");

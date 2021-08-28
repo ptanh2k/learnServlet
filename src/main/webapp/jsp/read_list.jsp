@@ -20,7 +20,7 @@
             <th>Due Date</th>
         <tr>
         <c:forEach items="${sessionScope.readList}" var="book">
-            <form action="returnBook" method="post">
+            <form action="returnBook" method="get">
                 <tr>
                     <td>${book.getBook_id()}<input type="hidden" name="book_id" value="${book.getBook_id()}" /></td>
                     <td>${book.getTitle()}</td>
